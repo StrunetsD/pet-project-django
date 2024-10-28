@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}Список статей{% endblock %}
+
+{% block content %}
+    <h1>Список статей</h1>
+    <div id="posts">
+        {% if posts %}
+            {% for post in posts %}
+                <div class="post">
+                    <h2>
+                        <a href="{% url 'post_detail' post.id %}" class="btn btn-primary">{{ post.title }}</a>
+                    </h2>
+                    <p><em>Создано: {{ post.created_at }}</em></p>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет доступных статей.</p>
+        {% endif %}
+    </div>
+
+
+{% endblock %}
